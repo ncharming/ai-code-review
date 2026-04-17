@@ -1,0 +1,21 @@
+name: Demo
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 拉代码
+      - uses: actions/checkout@v4
+
+      # 安装Java
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      # 执行命令
+      - run: java -version
