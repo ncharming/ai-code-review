@@ -1,0 +1,38 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: ai-code-review
+
+# ChatGLM 配置
+chatglm:
+  api:
+    # API 密钥（生产环境建议使用环境变量或配置中心）
+    api-key-secret: ${CHATGLM_API_KEY_SECRET:d3038be49a5178d419d414c8ed112c03.tLMnwvOUZ0qCv2WH}
+    # API 地址
+    url: https://open.bigmodel.cn/api/paas/v4/chat/completions
+    # Token 过期时间（毫秒）
+    token-expire-millis: 1800000
+    # 默认模型
+    default-model: glm-4.7-flash
+
+# 日志配置
+logging:
+  level:
+    root: INFO
+    com.practice.aicodereview: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+# 管理端点配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always

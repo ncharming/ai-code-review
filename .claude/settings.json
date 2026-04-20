@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(timeout 15 java -jar target/ai-review-1.0.0.jar)",
+      "Bash(curl -s http://localhost:8080/api/review/health)"
+    ]
+  }
+}

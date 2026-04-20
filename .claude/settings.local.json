@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs ls *)",
+      "Bash(grep -E \"\\(\\\\.java$|\\\\.yml$|pom\\\\.xml\\)\")",
+      "Bash(mvn clean *)",
+      "Bash(ls -lh target/*.jar)",
+      "Bash(java -jar target/ai-review-1.0.0.jar --help)"
+    ]
+  }
+}
