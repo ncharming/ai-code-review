@@ -1,9 +1,9 @@
 name: AI LLM Code Review Workflow
 
-#on:
- # push:
-  #  branches:
-   #   - '*'
+on:
+  push:
+    branches:
+      - '*'
 permissions:
   contents: write
   
