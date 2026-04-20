@@ -119,6 +119,7 @@ public class GitDiffConfig {
 
     private String writeLog(String log) throws Exception {
         String token = System.getenv("GITHUB_TOKEN");
+        System.out.println("获取的token："+token);
         Git git = Git.cloneRepository()
                 .setURI("https://github.com/ncharming/ai-code-review-log.git")
                 .setDirectory(new File("repo"))
