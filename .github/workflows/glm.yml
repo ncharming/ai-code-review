@@ -1,9 +1,9 @@
 name: AI LLM Code Review Workflow
 
-on:
-  push:
-    branches:
-      - '*'
+#on:
+ # push:
+  #  branches:
+   #   - '*'
 permissions:
   contents: write
   
@@ -20,6 +20,14 @@ jobs:
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v43
+
+#      过滤java文件
+#      - name: Filter Java Files
+#        id: changed-java-files
+#        uses: tj-actions/changed-files@v44
+#        with:
+#          files: |
+#            **/*.java
 
       - name: List all changed files
         env:
@@ -50,7 +58,7 @@ jobs:
                 echo "API调用失败，请检查配额和账单信息。"
                 exit 1
               else
-                echo "Response from OpenAI:"
+                echo "Response from GLM:"
                 echo "$airesponse"
                 echo "Github Action AI Code Review for \`$file\`, 代码评审结果如下： $airesponse " >> result_review.md
               fi
