@@ -17,12 +17,15 @@ import java.nio.charset.StandardCharsets;
 @Component
 public class ChatGLM implements IOpenAI {
 
-    private final String apiHost;
-    private final String apiKeySecret;
+    private final String apiHost = "https://open.bigmodel.cn/api/paas/v4/chat/completions";
+    private final String apiKeySecret = getEnv("CHATGLM_APIKEYSECRET");
 
-    public ChatGLM(String apiHost, String apiKeySecret) {
-        this.apiHost = apiHost;
-        this.apiKeySecret = apiKeySecret;
+    private String getEnv(String key) {
+        String value = System.getenv(key);
+        if (null == value || value.isEmpty()) {
+            throw new RuntimeException("value is null");
+        }
+        return value;
     }
 
     @Override
