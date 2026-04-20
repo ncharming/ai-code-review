@@ -22,25 +22,25 @@ public class GitCommand {
 
     private final Logger logger = LoggerFactory.getLogger(GitCommand.class);
 
-    private final String githubReviewLogUri;
+    private final String githubReviewLogUri=getEnv("GITHUB_REVIEW_LOG_URI");
 
-    private final String githubToken;
+    private final String githubToken=getEnv("GITHUB_TOKEN");
 
-    private final String project;
+    private final String project=getEnv("COMMIT_PROJECT");
 
-    private final String branch;
+    private final String branch=getEnv("COMMIT_BRANCH");
 
-    private final String author;
+    private final String author=getEnv("COMMIT_AUTHOR");
 
-    private final String message;
+    private final String message=getEnv("COMMIT_MESSAGE");
 
-    public GitCommand(String githubReviewLogUri, String githubToken, String project, String branch, String author, String message) {
-        this.githubReviewLogUri = githubReviewLogUri;
-        this.githubToken = githubToken;
-        this.project = project;
-        this.branch = branch;
-        this.author = author;
-        this.message = message;
+
+    private  String getEnv(String key) {
+        String value = System.getenv(key);
+        if (null == value || value.isEmpty()) {
+            throw new RuntimeException("value is null");
+        }
+        return value;
     }
 
     public String diff() throws IOException, InterruptedException {

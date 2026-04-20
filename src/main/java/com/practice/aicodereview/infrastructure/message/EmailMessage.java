@@ -15,17 +15,18 @@ import java.util.Properties;
 @Component
 public class EmailMessage {
 
-    private final String sendEmail;
+    private final String sendEmail=getEnv("SNED_EMIAL");
 
-    private final String sendEmailPwa;
-    private final String acceptEmail;
+    private final String sendEmailPwa= getEnv("SNED_EMIAL_PWD");
+    private final String acceptEmail=getEnv("COMMIT_EMAIL");
 
 
-
-    public EmailMessage(String sendEmail, String sendEmailPwa, String acceptEmail) {
-        this.sendEmail = sendEmail;
-        this.sendEmailPwa = sendEmailPwa;
-        this.acceptEmail = acceptEmail;
+    private  String getEnv(String key) {
+        String value = System.getenv(key);
+        if (null == value || value.isEmpty()) {
+            throw new RuntimeException("value is null");
+        }
+        return value;
     }
 
     public void snedMessage(String logUrl){
