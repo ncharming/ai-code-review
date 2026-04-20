@@ -3,9 +3,11 @@ package com.practice.aicodereview.config;
 import com.alibaba.fastjson2.JSON;
 import com.practice.aicodereview.model.dto.ChatCompletionRequest;
 import com.practice.aicodereview.model.dto.ChatCompletionSyncResponse;
-import com.practice.sdk.model.Model;
-import com.practice.sdk.utils.BearerTokenUtils;
+
+import com.practice.aicodereview.model.enums.GlmModel;
+import com.practice.aicodereview.utils.BearerTokenUtils;
 import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -20,6 +22,8 @@ import java.util.ArrayList;
  */
 public class GitDiffConfig {
 
+    @Autowired
+    private BearerTokenUtils bearerTokenUtils;
 
     @PostConstruct
     public void init() throws Exception {
@@ -53,7 +57,7 @@ public class GitDiffConfig {
     private String codeReview(String diffCode) throws Exception {
 
         String apiKeySecret = "c78fbacd3e10118ad5649d7a54a3a163.UunYDBxpzeClvSKZ";
-        String token = BearerTokenUtils.getToken(apiKeySecret);
+        String token = bearerTokenUtils.getToken(apiKeySecret);
 
         URL url = new URL("https://open.bigmodel.cn/api/paas/v4/chat/completions");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -65,7 +69,7 @@ public class GitDiffConfig {
         connection.setDoOutput(true);
 
         ChatCompletionRequest chatCompletionRequest = new ChatCompletionRequest();
-        chatCompletionRequest.setModel(Model.GLM_4_7_FLASH.getCode());
+        chatCompletionRequest.setModel(GlmModel.GLM_4_7_FLASH.getCode());
         chatCompletionRequest.setMessages(new ArrayList<ChatCompletionRequest.Prompt>() {
             private static final long serialVersionUID = -7988151926241837899L;
 
