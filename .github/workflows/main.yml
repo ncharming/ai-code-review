@@ -32,5 +32,5 @@ jobs:
           cp target/*.jar ./libs/
 
       - name: run jar code
-        run: java -jar ./libs/ai-review-1.0-SNAPSHOT.jar
+        run: java -jar ./libs/ai-review-1.0.0.jar
 
