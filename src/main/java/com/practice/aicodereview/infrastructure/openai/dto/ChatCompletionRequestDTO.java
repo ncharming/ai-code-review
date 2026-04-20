@@ -1,12 +1,13 @@
 package com.practice.aicodereview.infrastructure.openai.dto;
 
-import plus.gaga.middleware.sdk.domain.model.Model;
+
+import com.practice.aicodereview.domain.model.GlmModel;
 
 import java.util.List;
 
 public class ChatCompletionRequestDTO {
 
-    private String model = Model.GLM_4_FLASH.getCode();
+    private String model = GlmModel.GLM_4_7_FLASH.getCode();
     private List<Prompt> messages;
 
     public static class Prompt {
