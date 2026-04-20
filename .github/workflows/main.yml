@@ -31,8 +31,49 @@ jobs:
           mkdir -p libs
           cp target/*.jar ./libs/
 
+      # 获取仓库名，${GITHUB_REPOSITORY##*/}，去掉前面的 ncharming/ ，只保留 ai-code-review-log
+      - name: Get repository name
+        id: repo-name
+        run: echo "REPO_NAME=${GITHUB_REPOSITORY##*/}" >> $GITHUB_ENV
+
+      # 获取分支名
+      - name: Get branch name
+        id: branch-name
+        run: echo "BRANCH_NAME=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
+
+      - name: Get commit author
+        id: commit-author
+        run: echo "COMMIT_AUTHOR=$(git log -1 --pretty=format:'%an <%ae>')" >> $GITHUB_ENV
+
+      - name: Get commit message
+        id: commit-message
+        run: echo "COMMIT_MESSAGE=$(git log -1 --pretty=format:'%s')" >> $GITHUB_ENV
+
+      - name: Get commit Email
+        id: commit-email
+        run: echo "COMMIT_EMAIL=$(git log -1 --pretty=format:'%ae')" >> $GITHUB_ENV
+
+
+      - name: Print repository, branch name, commit author, and commit message
+        run: |
+          echo "Repository name is ${{ env.REPO_NAME }}"
+          echo "Branch name is ${{ env.BRANCH_NAME }}"
+          echo "Commit author is ${{ env.COMMIT_AUTHOR }}"
+          echo "Commit message is ${{ env.COMMIT_MESSAGE }}"    
+          echo "Commit email is ${{ env.COMMIT_EMAIL }}"    
+          
+
       - name: run jar code
         run: java -jar ./libs/ai-review-1.0.0.jar
         env:
+          GITHUB_REVIEW_LOG_URI: ${{ secrets.CODE_REVIEW_LOG_URI }}
           GITHUB_TOKEN: ${{ secrets.CODE_TOKEN }}
-
+          CHATGLM_MODEL: ${{ secrets.CHATGPT_MODEL }}
+          SNED_EMIAL: ${{ secrets.SNED_EMIAL }}
+          SNED_EMIAL_PWD: ${{ secrets.SNED_EMIAL_PWD }}
+          CHATGLM_APIKEYSECRET: ${{ secrets.CHATGPT_KEY }}
+          COMMIT_PROJECT: ${{ env.REPO_NAME }}
+          COMMIT_BRANCH: ${{ env.BRANCH_NAME }}
+          COMMIT_AUTHOR: ${{ env.COMMIT_AUTHOR }}
+          COMMIT_MESSAGE: ${{ env.COMMIT_MESSAGE }}
+          COMMIT_EMAIL: ${{ env.COMMIT_EMAIL }}

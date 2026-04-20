@@ -1,4 +1,4 @@
-package com.practice.aicodereview.model.enums;
+package com.practice.aicodereview.domain.model;
 
 import lombok.Getter;
 
