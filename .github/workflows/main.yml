@@ -27,7 +27,9 @@ jobs:
         run: mvn clean install
 
       - name: Copy jar
-        run: mvn dependency:copy -Dartifact=com.practice:ai-review:1.0:jar -DoutputDirectory=./libs
+        run: |
+          mkdir -p libs
+          cp target/*.jar ./libs/
 
       - name: run jar code
         run: java -jar ./libs/ai-review-1.0-SNAPSHOT.jar
