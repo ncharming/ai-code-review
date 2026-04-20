@@ -8,6 +8,7 @@ import com.practice.aicodereview.model.enums.GlmModel;
 import com.practice.aicodereview.utils.BearerTokenUtils;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
  * @author：nihongyu
  * @date: 2026/4/20
  */
+@Component
 public class GitDiffConfig {
 
     @Autowired
@@ -52,6 +54,8 @@ public class GitDiffConfig {
         // 2. chatglm 代码评审
         String log = codeReview(diffCode.toString());
         System.out.println("code review：" + log);
+
+        System.exit(0);
     }
 
     private String codeReview(String diffCode) throws Exception {
