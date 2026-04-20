@@ -3,6 +3,7 @@ package com.practice.aicodereview.infrastructure.message;
 import jakarta.mail.*;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
+import org.springframework.stereotype.Component;
 
 import java.util.Properties;
 
@@ -11,6 +12,7 @@ import java.util.Properties;
  * @author：nihongyu
  * @date: 2026/4/20
  */
+@Component
 public class EmailMessage {
 
     private final String sendEmail;

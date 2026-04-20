@@ -3,7 +3,6 @@ package com.practice.aicodereview.domain.service;
 import com.practice.aicodereview.infrastructure.git.GitCommand;
 import com.practice.aicodereview.infrastructure.message.EmailMessage;
 import com.practice.aicodereview.infrastructure.openai.IOpenAI;
-import org.hibernate.validator.cfg.defs.EmailDef;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

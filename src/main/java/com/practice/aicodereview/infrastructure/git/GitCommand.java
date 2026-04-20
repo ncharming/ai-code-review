@@ -5,6 +5,8 @@ import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
@@ -15,6 +17,7 @@ import java.util.Date;
  * @author：nihongyu
  * @date: 2026/4/20
  */
+@Component
 public class GitCommand {
 
     private final Logger logger = LoggerFactory.getLogger(GitCommand.class);

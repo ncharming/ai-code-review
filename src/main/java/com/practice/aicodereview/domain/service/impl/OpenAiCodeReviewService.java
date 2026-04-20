@@ -7,6 +7,7 @@ import com.practice.aicodereview.infrastructure.message.EmailMessage;
 import com.practice.aicodereview.infrastructure.openai.IOpenAI;
 import com.practice.aicodereview.infrastructure.openai.dto.ChatCompletionRequestDTO;
 import com.practice.aicodereview.infrastructure.openai.dto.ChatCompletionSyncResponseDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 @Service
 public class OpenAiCodeReviewService extends AbstractOpenAiCodeReviewService {
 
-
+    @Autowired
     public OpenAiCodeReviewService(GitCommand gitCommand, IOpenAI openAI, EmailMessage emailMessage) {
         super(gitCommand, openAI, emailMessage);
     }

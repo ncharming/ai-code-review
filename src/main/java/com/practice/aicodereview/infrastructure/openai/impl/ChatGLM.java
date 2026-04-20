@@ -5,6 +5,7 @@ import com.practice.aicodereview.infrastructure.openai.IOpenAI;
 import com.practice.aicodereview.infrastructure.openai.dto.ChatCompletionRequestDTO;
 import com.practice.aicodereview.infrastructure.openai.dto.ChatCompletionSyncResponseDTO;
 import com.practice.aicodereview.utils.BearerTokenUtils;
+import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -13,6 +14,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
+@Component
 public class ChatGLM implements IOpenAI {
 
     private final String apiHost;
