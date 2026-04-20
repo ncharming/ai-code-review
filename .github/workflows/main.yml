@@ -33,6 +33,7 @@ jobs:
 
       - name: run jar code
         run: java -jar ./libs/ai-review-1.0.0.jar
+        # 配置环境变量
         env:
           GITHUB_TOKEN: ${{ secrets.CODE_TOKEN }}
 
