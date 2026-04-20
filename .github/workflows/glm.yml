@@ -19,7 +19,7 @@ jobs:
      
       - name: Get changed files
         id: changed-files
-        uses: tj-actions/changed-files@v43
+        uses: tj-actions/changed-files@v46
 
 #      过滤java文件
 #      - name: Filter Java Files
