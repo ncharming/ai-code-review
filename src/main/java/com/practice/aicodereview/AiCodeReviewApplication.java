@@ -38,7 +38,7 @@ public class AiCodeReviewApplication {
                 getEnv("SNED_EMIAL_PWD"),
                 getEnv("COMMIT_EMAIL"));
 
-        IOpenAI openAI = new ChatGLM(getEnv("CHATGLM_APIHOST"), getEnv("CHATGLM_APIKEYSECRET"));
+        IOpenAI openAI = new ChatGLM("https://open.bigmodel.cn/api/paas/v4/chat/completions", getEnv("CHATGLM_APIKEYSECRET"));
 
         OpenAiCodeReviewService openAiCodeReviewService = new OpenAiCodeReviewService(gitCommand, openAI, message);
         openAiCodeReviewService.exec();
